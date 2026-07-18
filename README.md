@@ -45,6 +45,8 @@ The **USD 300 AI Workflow Reliability Audit** covers one workflow and produces a
 
 [Review the fixed scope, deliverables, process and boundaries](https://seekiingforhappiness-glitch.github.io/ai-workflow-acceptance-test-starter/audit/) before inquiring.
 
+[Review the technical sample report](https://seekiingforhappiness-glitch.github.io/ai-workflow-acceptance-test-starter/audit/sample-report.pdf). It is a self-directed evidence sample, not a paid-client result, business-outcome claim, or completed audit for your workflow.
+
 [Discuss the fixed-scope audit](https://github.com/seekiingforhappiness-glitch/ai-workflow-acceptance-test-starter/issues/new?template=workflow-audit-inquiry.yml) using the public, non-binding form. Do not include private company, customer, credential, system-access, or payment information.
 
 ## Boundaries

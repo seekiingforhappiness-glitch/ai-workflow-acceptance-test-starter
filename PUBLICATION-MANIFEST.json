@@ -17,6 +17,13 @@
     "offerId": "workflow-audit",
     "path": "/docs/audit",
     "priceUsd": 300,
+    "proofAsset": {
+      "bytes": 10932,
+      "claimsBoundary": "self_directed_sample_no_paid_client_or_outcome_claims",
+      "path": "/docs/audit/sample-report.pdf",
+      "sha256": "03e767b2ce6bffec778b9141433272cd409bd4649f189b988a4573fd631ebb3c",
+      "url": "https://seekiingforhappiness-glitch.github.io/ai-workflow-acceptance-test-starter/audit/sample-report.pdf"
+    },
     "url": "https://seekiingforhappiness-glitch.github.io/ai-workflow-acceptance-test-starter/audit/"
   },
   "workbench": {
