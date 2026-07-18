@@ -126,6 +126,40 @@ button:disabled { cursor: not-allowed; opacity: 0.48; }
 .result-count.fail { color: var(--red); }
 #validation-details { margin: 16px 0 0; padding-left: 18px; color: var(--muted); font-size: 11px; line-height: 1.55; }
 
+.paid-kit-rail {
+  margin-top: 14px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+}
+.paid-kit-rail h2 { margin: 0; font-size: 19px; line-height: 1.25; letter-spacing: -0.02em; }
+.paid-kit-rail p { max-width: 780px; margin: 6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.paid-kit-action { display: grid; justify-items: stretch; gap: 7px; min-width: 230px; }
+.interest-link {
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 1px solid var(--blue);
+  border-radius: 7px;
+  background: var(--blue);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 760;
+  text-align: center;
+  text-decoration: none;
+  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+.interest-link:hover { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-1px); }
+.interest-link:focus-visible { outline: 3px solid rgb(18 97 232 / 24%); outline-offset: 2px; }
+.paid-kit-action span { color: var(--muted); font-size: 10px; line-height: 1.4; text-align: center; }
+
 footer { min-height: 78px; width: min(1380px, calc(100% - 52px)); margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 16px; color: var(--muted); font-size: 12px; text-align: center; }
 footer p { margin: 0; }
 footer a { color: var(--blue); text-underline-offset: 3px; }
@@ -138,6 +172,9 @@ footer a { color: var(--blue); text-underline-offset: 3px; }
   .validation-result { border-left: 0; border-top: 1px solid var(--line); }
   .test-row { grid-template-columns: 24px minmax(130px, 0.7fr) minmax(180px, 1.3fr); }
   .test-file { grid-column: 2 / -1; }
+  .paid-kit-rail { grid-template-columns: 1fr; gap: 16px; }
+  .paid-kit-action { min-width: 0; justify-items: start; }
+  .interest-link { min-width: 230px; }
 }
 
 @media (max-width: 620px) {
@@ -155,6 +192,8 @@ footer a { color: var(--blue); text-underline-offset: 3px; }
   .form-actions, .validator-actions { align-items: stretch; flex-direction: column; }
   .form-actions button, .validator-actions button { width: 100%; }
   .validator-actions span { margin: 2px 0 0; }
+  .paid-kit-rail { padding: 19px 16px; }
+  .paid-kit-action, .interest-link { width: 100%; }
   footer { min-height: 92px; flex-direction: column; gap: 6px; }
 }
 
