@@ -1,0 +1,38 @@
+name: Paid kit interest
+description: Record explicit interest in the full AI Workflow Delivery Kit without sharing private data.
+title: "[Product interest] "
+labels:
+  - product-interest
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a public form. Do not include customer data, credentials, private system details, email addresses, or payment information. It is not an order and creates no payment obligation.
+  - type: dropdown
+    id: use-case
+    attributes:
+      label: Primary use case
+      options:
+        - AI workflow delivery
+        - OCR or document automation
+        - Agent or API automation
+        - Internal QA and acceptance testing
+    validations:
+      required: true
+  - type: checkboxes
+    id: intent
+    attributes:
+      label: Explicit interest
+      options:
+        - label: I am evaluating the paid AI Workflow Delivery Kit at USD 79.
+          required: true
+        - label: I understand this public form is not an order, invoice, or payment request.
+          required: true
+  - type: textarea
+    id: desired-outcome
+    attributes:
+      label: Desired workflow outcome (optional)
+      description: Keep this generic and non-confidential.
+      placeholder: Example: define acceptance tests for an OCR review workflow.
+    validations:
+      required: false

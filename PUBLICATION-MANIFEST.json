@@ -1,0 +1,15 @@
+{
+  "artifact": {
+    "bytes": 4462,
+    "name": "ai-workflow-acceptance-test-starter-v1.0.0.zip",
+    "sha256": "9c41516bdc9f1e09d433ef335892106da6bd7ef5a9252492e0ddae2b1164afd6"
+  },
+  "containsSensitiveData": false,
+  "id": "github-starter-public",
+  "productId": "ai-workflow-delivery-kit",
+  "publicationBoundary": "free_starter_only_no_checkout_no_customer_data",
+  "releaseTag": "v1.0.0",
+  "revenueClaims": false,
+  "sampleId": "ai-workflow-acceptance-test-starter",
+  "schemaVersion": 1
+}
