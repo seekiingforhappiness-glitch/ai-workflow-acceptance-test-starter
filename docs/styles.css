@@ -158,6 +158,8 @@ button:disabled { cursor: not-allowed; opacity: 0.48; }
 }
 .interest-link:hover { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-1px); }
 .interest-link:focus-visible { outline: 3px solid rgb(18 97 232 / 24%); outline-offset: 2px; }
+.interest-link.secondary-interest { background: white; color: var(--blue); }
+.interest-link.secondary-interest:hover { background: #f3f7ff; border-color: var(--blue-dark); color: var(--blue-dark); }
 .paid-kit-action span { color: var(--muted); font-size: 10px; line-height: 1.4; text-align: center; }
 
 footer { min-height: 78px; width: min(1380px, calc(100% - 52px)); margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 16px; color: var(--muted); font-size: 12px; text-align: center; }

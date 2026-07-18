@@ -1,0 +1,38 @@
+name: Workflow audit inquiry
+description: Discuss one fixed-scope USD 300 AI workflow reliability audit without sharing private data.
+title: "[Workflow audit inquiry] "
+labels:
+  - workflow-audit-inquiry
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a public, non-binding inquiry form. Do not include customer data, credentials, private system details, access instructions, email addresses, or payment information. It is not an order, contract, invoice, or payment request. Scope, buyer qualification, payment path, and delivery fit require review before any work begins.
+  - type: dropdown
+    id: workflow-type
+    attributes:
+      label: Workflow type
+      options:
+        - AI or agent workflow
+        - API automation
+        - OCR or document workflow
+        - Internal QA or approval workflow
+    validations:
+      required: true
+  - type: checkboxes
+    id: inquiry
+    attributes:
+      label: Fixed-scope inquiry
+      options:
+        - label: I want to discuss the fixed-scope AI Workflow Reliability Audit at USD 300.
+          required: true
+        - label: I understand this is a public inquiry, not an order, contract, invoice, or payment request.
+          required: true
+  - type: textarea
+    id: desired-outcome
+    attributes:
+      label: Desired outcome (optional)
+      description: Keep this generic and non-confidential. Do not describe private systems or data.
+      placeholder: Example: define failure modes and acceptance tests for one approval workflow.
+    validations:
+      required: false

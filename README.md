@@ -39,6 +39,12 @@ The paid AI Workflow Delivery Kit adds intake, audit, OCR-document, human-review
 
 [Record explicit product interest](https://github.com/seekiingforhappiness-glitch/ai-workflow-acceptance-test-starter/issues/new?template=product-interest.yml) if you are evaluating the full kit. The form is public and must not contain private company, customer, credential, or payment information.
 
+## Need a fixed-scope reliability audit?
+
+The **USD 300 AI Workflow Reliability Audit** covers one workflow and produces a scoped, testable implementation plan. It is a service inquiry, not a checkout, order, contract, invoice, or payment request. Scope, buyer qualification, payment path, and delivery fit must be reviewed before any work begins.
+
+[Discuss the fixed-scope audit](https://github.com/seekiingforhappiness-glitch/ai-workflow-acceptance-test-starter/issues/new?template=workflow-audit-inquiry.yml) using the public, non-binding form. Do not include private company, customer, credential, system-access, or payment information.
+
 ## Boundaries
 
 This Starter is not a finished automation, security review, compliance opinion, or guarantee of model accuracy. The paid kit is also a template system, not a deployed SaaS or a promise of business outcomes.
