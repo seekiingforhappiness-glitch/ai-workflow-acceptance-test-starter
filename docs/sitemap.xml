@@ -4,4 +4,8 @@
     <loc>https://seekiingforhappiness-glitch.github.io/ai-workflow-acceptance-test-starter/</loc>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://seekiingforhappiness-glitch.github.io/ai-workflow-acceptance-test-starter/audit/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

@@ -7,11 +7,18 @@
   "containsSensitiveData": false,
   "id": "github-starter-public",
   "productId": "ai-workflow-delivery-kit",
-  "publicationBoundary": "free_starter_only_no_checkout_no_customer_data",
+  "publicationBoundary": "free_starter_and_nonbinding_service_inquiry_no_checkout_no_customer_data",
   "releaseTag": "v1.0.0",
   "revenueClaims": false,
   "sampleId": "ai-workflow-acceptance-test-starter",
   "schemaVersion": 1,
+  "serviceLanding": {
+    "checkout": false,
+    "offerId": "workflow-audit",
+    "path": "/docs/audit",
+    "priceUsd": 300,
+    "url": "https://seekiingforhappiness-glitch.github.io/ai-workflow-acceptance-test-starter/audit/"
+  },
   "workbench": {
     "path": "/docs",
     "runsLocally": true,

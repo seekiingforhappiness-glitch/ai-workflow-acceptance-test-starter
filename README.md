@@ -43,6 +43,8 @@ The paid AI Workflow Delivery Kit adds intake, audit, OCR-document, human-review
 
 The **USD 300 AI Workflow Reliability Audit** covers one workflow and produces a scoped, testable implementation plan. It is a service inquiry, not a checkout, order, contract, invoice, or payment request. Scope, buyer qualification, payment path, and delivery fit must be reviewed before any work begins.
 
+[Review the fixed scope, deliverables, process and boundaries](https://seekiingforhappiness-glitch.github.io/ai-workflow-acceptance-test-starter/audit/) before inquiring.
+
 [Discuss the fixed-scope audit](https://github.com/seekiingforhappiness-glitch/ai-workflow-acceptance-test-starter/issues/new?template=workflow-audit-inquiry.yml) using the public, non-binding form. Do not include private company, customer, credential, system-access, or payment information.
 
 ## Boundaries
