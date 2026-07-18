@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://seekiingforhappiness-glitch.github.io/ai-workflow-acceptance-test-starter/sitemap.xml

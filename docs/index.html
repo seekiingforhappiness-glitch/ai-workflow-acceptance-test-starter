@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Build an AI workflow contract, generate six failure-aware acceptance tests, and validate a run log locally in your browser."
+    />
+    <meta name="color-scheme" content="light" />
+    <link rel="canonical" href="https://seekiingforhappiness-glitch.github.io/ai-workflow-acceptance-test-starter/" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Acceptance Workbench</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#build">Skip to workspace</a>
+    <header class="site-header">
+      <a class="brand" href="#build" aria-label="Acceptance Workbench home">Acceptance Workbench</a>
+      <nav aria-label="Primary navigation">
+        <a class="active" href="#build">Build</a>
+        <a href="#validate">Validate</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <h1 id="page-title">Define the workflow. Prove the result.</h1>
+        <p>Create a testable contract and six failure-aware acceptance tests before automation reaches production.</p>
+      </section>
+
+      <section class="workspace" id="build" aria-label="Acceptance test builder">
+        <form class="contract-panel" id="contract-form">
+          <div class="section-heading">
+            <h2>Workflow contract</h2>
+            <p>Required fields stay in this browser.</p>
+          </div>
+
+          <label for="workflow-name">Workflow name</label>
+          <input id="workflow-name" name="workflowName" maxlength="90" required />
+
+          <label for="desired-outcome">Desired outcome</label>
+          <textarea id="desired-outcome" name="desiredOutcome" rows="3" maxlength="320" required></textarea>
+
+          <label for="approval-point">Human approval point</label>
+          <textarea id="approval-point" name="approvalPoint" rows="2" maxlength="240" required></textarea>
+
+          <label for="side-effect">Side effect</label>
+          <textarea id="side-effect" name="sideEffect" rows="2" maxlength="240" required></textarea>
+
+          <label for="workflow-type">Workflow type</label>
+          <select id="workflow-type" name="workflowType">
+            <option value="event-driven">Event-driven</option>
+            <option value="document-review">Document review</option>
+            <option value="agent-api">Agent or API</option>
+          </select>
+
+          <div class="form-actions">
+            <button class="secondary" id="load-example" type="button">Load example</button>
+            <button class="primary" type="submit">Generate files</button>
+          </div>
+        </form>
+
+        <section class="suite-panel" aria-labelledby="suite-title">
+          <div class="section-heading suite-heading">
+            <div>
+              <h2 id="suite-title">Generated test suite</h2>
+              <p id="suite-summary" aria-live="polite">Complete the contract to generate the package.</p>
+            </div>
+            <button class="primary download" id="download-package" type="button" disabled>Download package (.zip)</button>
+          </div>
+          <ol class="test-list" id="test-list"></ol>
+        </section>
+      </section>
+
+      <section class="validator" id="validate" aria-labelledby="validator-title">
+        <div class="validator-input">
+          <div class="section-heading">
+            <h2 id="validator-title">Run log validator</h2>
+            <p>Paste JSON or NDJSON, or drop a local file. Nothing is uploaded.</p>
+          </div>
+          <label class="sr-only" for="run-log">Run log JSON</label>
+          <textarea id="run-log" rows="11" spellcheck="false" placeholder='{"status":"success","artifacts":["evidence.json"]}'></textarea>
+          <div class="validator-actions">
+            <button class="secondary" id="load-run-log" type="button">Load passing example</button>
+            <button class="primary" id="validate-log" type="button">Validate run log</button>
+            <span id="file-state" aria-live="polite">Maximum local file size: 512 KB</span>
+          </div>
+        </div>
+
+        <aside class="validation-result" aria-labelledby="result-title">
+          <h2 id="result-title">Validation result</h2>
+          <div class="result-count pass"><strong id="pass-count">0</strong><span>Pass</span></div>
+          <div class="result-count review"><strong id="review-count">6</strong><span>Needs review</span></div>
+          <div class="result-count fail"><strong id="fail-count">0</strong><span>Fail</span></div>
+          <ul id="validation-details" aria-live="polite"></ul>
+        </aside>
+      </section>
+    </main>
+
+    <footer id="about">
+      <p>Runs locally. No uploads. No tracking.</p>
+      <a href="https://github.com/seekiingforhappiness-glitch/ai-workflow-acceptance-test-starter">Source and verified Starter</a>
+    </footer>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

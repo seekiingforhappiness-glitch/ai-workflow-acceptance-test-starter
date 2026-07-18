@@ -2,6 +2,10 @@
 
 Turn an AI automation idea into a workflow with observable pass/fail conditions before implementation begins.
 
+## Try it in the browser
+
+[Open Acceptance Workbench](https://seekiingforhappiness-glitch.github.io/ai-workflow-acceptance-test-starter/) to create a workflow contract, generate a four-file ZIP, and validate a JSON or NDJSON run log. It runs entirely in the browser with no login, upload, tracking script, or customer data.
+
 ## Free download
 
 [Download the verified v1.0.0 ZIP](https://github.com/seekiingforhappiness-glitch/ai-workflow-acceptance-test-starter/releases/download/v1.0.0/ai-workflow-acceptance-test-starter-v1.0.0.zip)

@@ -11,5 +11,11 @@
   "releaseTag": "v1.0.0",
   "revenueClaims": false,
   "sampleId": "ai-workflow-acceptance-test-starter",
-  "schemaVersion": 1
+  "schemaVersion": 1,
+  "workbench": {
+    "path": "/docs",
+    "runsLocally": true,
+    "trackingScripts": false,
+    "url": "https://seekiingforhappiness-glitch.github.io/ai-workflow-acceptance-test-starter/"
+  }
 }
