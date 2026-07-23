@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en" data-publication-status="local_draft_not_published" data-checkout-enabled="false">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="A done-for-you weekly data report: 8 fixed KPI slots, anomaly interpretation and a PDF in your inbox every week. Presale — checkout opens after 3 intents are collected.">
+  <title>Monday Dashboard — Weekly Data Report Subscription (Presale)</title>
+  <style>
+    :root { --paper:#f7f4ec; --white:#fff; --ink:#102630; --teal:#087c74; --teal-dark:#075d59; --amber:#f0a020; --slate:#596a73; --rule:#bdc9cc; --mist:#e8efef; --soft:#efece4; --danger:#8f3e3a; --radius:12px; --max:1440px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:16px; line-height:1.55; }
+    a { color:inherit; }
+    button, .button { font:700 1rem/1.2 inherit; }
+    .skip { position:absolute; left:-9999px; top:auto; }
+    .skip:focus { left:20px; top:14px; z-index:20; padding:10px 14px; background:var(--ink); color:white; }
+    .shell { width:min(calc(100% - 80px),var(--max)); margin-inline:auto; }
+    header { border-bottom:1px solid var(--rule); background:var(--paper); position:sticky; top:0; z-index:10; }
+    .nav { min-height:84px; display:flex; align-items:center; gap:38px; }
+    .wordmark { font-size:1.35rem; font-weight:800; letter-spacing:-.03em; text-decoration:none; margin-right:auto; }
+    .nav nav { display:flex; gap:30px; }
+    .nav nav a { text-decoration:none; font-weight:650; }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0 24px; border-radius:6px; border:1px solid var(--teal); background:var(--teal); color:white; text-decoration:none; cursor:pointer; }
+    .button:hover { background:var(--teal-dark); }
+    .button.secondary { background:transparent; color:var(--teal-dark); }
+    .button.secondary:hover { background:var(--mist); }
+    .checkout-disabled { min-width:220px; min-height:52px; padding:7px 18px; border:1px solid var(--rule); border-radius:6px; background:#e7e5e0; color:#6f7374; cursor:not-allowed; font-weight:750; }
+    .checkout-disabled small { display:block; font-weight:500; font-size:.75rem; margin-top:3px; }
+    main > section { border-bottom:1px solid var(--rule); }
+    .hero { min-height:640px; display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; padding-block:72px; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { max-width:720px; font-size:clamp(3rem,4.6vw,4.6rem); line-height:.98; letter-spacing:-.058em; margin-bottom:32px; }
+    h2 { font-size:clamp(2.2rem,3.6vw,3.8rem); line-height:1.02; letter-spacing:-.05em; margin-bottom:18px; }
+    h3 { font-size:1.55rem; line-height:1.15; letter-spacing:-.025em; }
+    .lede { max-width:620px; color:#41545e; font-size:1.4rem; line-height:1.5; margin-bottom:34px; }
+    .actions { display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-bottom:30px; }
+    .text-link { color:var(--teal-dark); font-weight:750; text-underline-offset:6px; }
+    .price-line { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+    .price-line strong { color:var(--teal); font-size:2.7rem; letter-spacing:-.04em; }
+    .tag { display:inline-block; padding:4px 12px; border:1px solid var(--amber); color:var(--amber); border-radius:999px; font-size:.8rem; font-weight:750; letter-spacing:.02em; }
+    .band { padding-block:88px; }
+    .band-head { display:flex; justify-content:space-between; gap:50px; align-items:end; margin-bottom:48px; }
+    .band-head p { color:var(--slate); max-width:560px; font-size:1.12rem; }
+    /* sample report preview (CSS-drawn, synthetic demo data) */
+    .report-preview { background:white; border:1px solid #93a5a9; border-radius:var(--radius); overflow:hidden; box-shadow:0 18px 50px rgba(16,38,48,.08); }
+    .report-preview header.preview-head { position:static; display:flex; justify-content:space-between; gap:16px; align-items:baseline; padding:18px 22px; border-bottom:1px solid var(--rule); background:white; }
+    .preview-head strong { font-size:1.05rem; }
+    .preview-head span { color:var(--slate); font-size:.82rem; }
+    .kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+    .kpi { padding:16px 14px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); }
+    .kpi:nth-child(4n) { border-right:0; }
+    .kpi small { display:block; color:var(--slate); font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; }
+    .kpi b { display:block; font-size:1.35rem; letter-spacing:-.02em; margin-top:4px; font-variant-numeric:tabular-nums; }
+    .kpi em { font-style:normal; font-size:.78rem; font-weight:700; }
+    .kpi em.up { color:var(--teal-dark); }
+    .kpi em.down { color:var(--danger); }
+    .anomaly { display:flex; gap:12px; padding:14px 22px; border-bottom:1px solid var(--rule); font-size:.92rem; color:#41545e; }
+    .anomaly b { color:var(--amber); white-space:nowrap; }
+    .demo-note { padding:12px 22px; font-size:.78rem; color:var(--slate); background:var(--soft); }
+    /* 8 slots */
+    .slots { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:36px; }
+    .slot { padding:24px 20px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:rgba(255,255,255,.45); }
+    .slot span { display:block; color:var(--teal); font-weight:800; font-size:.85rem; margin-bottom:8px; font-variant-numeric:tabular-nums; }
+    .slot b { display:block; font-size:1.08rem; margin-bottom:6px; }
+    .slot p { margin:0; color:var(--slate); font-size:.88rem; }
+    .deliverables { display:grid; grid-template-columns:repeat(3,1fr); gap:34px; margin-top:64px; }
+    .deliverables article { border-top:2px solid var(--teal); padding-top:22px; }
+    .deliverables p { color:var(--slate); }
+    /* pricing pair */
+    .pair { display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:stretch; }
+    .plan-card { border:1px solid #93a5a9; border-radius:var(--radius); padding:42px; background:rgba(255,255,255,.55); display:flex; flex-direction:column; }
+    .plan-card.featured { border-color:var(--teal); box-shadow:0 18px 50px rgba(8,124,116,.10); }
+    .plan-card .amount { display:block; font-size:4.4rem; line-height:1; letter-spacing:-.055em; }
+    .plan-card .per { color:var(--slate); font-size:1rem; }
+    .plan-card .anchor { color:var(--amber); font-weight:800; font-size:1.1rem; margin-top:10px; }
+    .plan-card hr { border:0; border-top:1px solid var(--rule); margin:22px 0; width:100%; }
+    .included { list-style:none; margin:0 0 8px; padding:0; }
+    .included li { padding:12px 0; border-bottom:1px solid var(--rule); }
+    .included li:last-child { border-bottom:0; }
+    .gate { margin-top:auto; padding-top:22px; }
+    .gate-note { color:var(--slate); font-size:.9rem; margin:12px 0 0; }
+    .provisional { color:var(--slate); font-size:.8rem; margin-top:10px; }
+    /* intake form */
+    .intake { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+    form .field { margin-bottom:22px; }
+    form label, .group-label { display:block; font-weight:700; margin-bottom:8px; }
+    form .hint { color:var(--slate); font-size:.85rem; margin-top:6px; }
+    input[type=text], input[type=email], select, textarea { width:100%; padding:13px 14px; border:1px solid var(--rule); border-radius:6px; background:white; color:var(--ink); font:inherit; font-size:.98rem; }
+    input:focus, select:focus, textarea:focus { outline:2px solid var(--teal); outline-offset:1px; }
+    textarea { min-height:96px; resize:vertical; }
+    .checks { display:flex; flex-direction:column; gap:9px; }
+    .checks label { display:flex; gap:10px; align-items:flex-start; font-weight:500; margin:0; }
+    .checks input { margin-top:4px; }
+    .radios { display:flex; gap:10px; flex-wrap:wrap; }
+    .radios label { display:flex; gap:8px; align-items:center; border:1px solid var(--rule); border-radius:999px; padding:10px 16px; font-weight:650; cursor:pointer; background:white; margin:0; }
+    .radios input { accent-color:var(--teal); }
+    fieldset { border:0; margin:0 0 22px; padding:0; }
+    legend { font-weight:700; margin-bottom:10px; padding:0; }
+    .output-box { background:white; border:1px solid #93a5a9; border-radius:var(--radius); padding:26px; position:sticky; top:110px; }
+    .output-box strong { display:block; font-size:1.1rem; margin-bottom:14px; }
+    #request-text { width:100%; min-height:300px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.82rem; line-height:1.5; background:var(--paper); }
+    .submit-row { display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; }
+    .copy-status { color:var(--teal-dark); font-weight:700; font-size:.9rem; margin-top:10px; min-height:1.3em; }
+    .submit-note { color:var(--slate); font-size:.85rem; margin-top:14px; }
+    /* scope exclusion + faq */
+    .fit { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--rule); margin-top:10px; }
+    .fit > div { padding:42px 44px 20px 0; }
+    .fit > div + div { border-left:1px solid var(--rule); padding-left:44px; }
+    .fit ol { list-style:none; margin:0; padding:0; counter-reset:fit; }
+    .fit li { counter-increment:fit; display:grid; grid-template-columns:48px 1fr; padding:15px 0; border-bottom:1px solid var(--rule); }
+    .fit li::before { content:"0" counter(fit); color:var(--teal); font-weight:800; }
+    .fit.excluded li::before { color:var(--danger); }
+    .faq { margin-top:70px; display:grid; grid-template-columns:180px 1fr; gap:30px; }
+    details { border-top:1px solid var(--rule); padding:18px 0; }
+    details:last-child { border-bottom:1px solid var(--rule); }
+    summary { cursor:pointer; font-weight:750; font-size:1.05rem; }
+    details p { color:var(--slate); max-width:820px; margin:14px 0 4px; }
+    footer { background:var(--ink); color:white; }
+    .footer { min-height:112px; display:flex; align-items:center; gap:34px; }
+    .footer .wordmark { margin-right:0; }
+    .preview-status { color:#ccd7d8; border-left:1px solid #6d8086; padding-left:34px; }
+    @media (max-width:1000px) {
+      .shell { width:min(calc(100% - 40px),var(--max)); }
+      .nav nav { display:none; }
+      .hero,.pair,.intake,.deliverables { grid-template-columns:1fr; }
+      .hero { padding-block:58px; gap:40px; }
+      .band-head { display:block; }
+      .slots { grid-template-columns:repeat(2,1fr); }
+      .kpi-grid { grid-template-columns:repeat(2,1fr); }
+      .kpi:nth-child(2n) { border-right:0; }
+      .fit { grid-template-columns:1fr; }
+      .fit > div + div { border-left:0; border-top:1px solid var(--rule); padding-left:0; }
+      .output-box { position:static; }
+    }
+    @media (max-width:680px) {
+      .shell { width:min(calc(100% - 28px),var(--max)); }
+      header { position:static; }
+      .nav { min-height:72px; }
+      .nav > .checkout-disabled { display:none; }
+      h1 { font-size:clamp(2.7rem,14vw,4rem); }
+      h2 { font-size:2.4rem; }
+      .band { padding-block:64px; }
+      .slots { grid-template-columns:1fr; }
+      .kpi-grid { grid-template-columns:1fr 1fr; }
+      .plan-card { padding:26px; }
+      .plan-card .amount { font-size:3.4rem; }
+      .fit > div { padding-right:0; }
+      .faq { grid-template-columns:1fr; gap:0; }
+      .footer { align-items:flex-start; flex-direction:column; justify-content:center; gap:10px; }
+      .preview-status { border-left:0; padding-left:0; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="shell nav">
+      <a class="wordmark" href="#top">Monday Dashboard</a>
+      <nav aria-label="Primary"><a href="#what">What you get</a><a href="#plans">Plans</a><a href="#sample">Sample</a><a href="#intake">Reserve</a><a href="#faq">FAQ</a></nav>
+      <button class="checkout-disabled" type="button" disabled aria-disabled="true">Presale — checkout locked<small>Opens after 3 intents are collected</small></button>
+    </div>
+  </header>
+  <main id="main">
+    <section id="top"><div class="shell hero">
+      <div>
+        <h1>Your weekly numbers, done for you — not another dashboard to configure.</h1>
+        <p class="lede">Every week: one PDF report with your 8 core KPIs, plain-English anomaly interpretation, and three suggested next actions. You send the data exports; we do the rest.</p>
+        <div class="actions"><a class="button" href="#intake">Reserve a presale slot</a><a class="text-link" href="#plans">Or start with the $49 trial report →</a></div>
+        <div class="price-line"><strong>$129</strong><span>/ month — weekly report subscription</span><span class="tag">Presale</span></div>
+        <p class="provisional">Pricing shown is provisional launch pricing (assumed, not yet validated by a paid order). Nothing is charged during presale.</p>
+      </div>
+      <div class="report-preview" id="sample" aria-label="Sample weekly report preview with synthetic demo data">
+        <header class="preview-head"><strong>Weekly Report — Week 29</strong><span>Jul 13 – Jul 19 · PDF, 3 pages</span></header>
+        <div class="kpi-grid">
+          <div class="kpi"><small>Revenue / MRR</small><b>$8,420</b><em class="up">▲ 6.2% WoW</em></div>
+          <div class="kpi"><small>Orders</small><b>212</b><em class="up">▲ 3.4% WoW</em></div>
+          <div class="kpi"><small>Conversion rate</small><b>2.9%</b><em class="down">▼ 0.4 pt</em></div>
+          <div class="kpi"><small>Traffic</small><b>7,310</b><em class="up">▲ 11.8% WoW</em></div>
+          <div class="kpi"><small>Active users</small><b>1,486</b><em class="up">▲ 2.1% WoW</em></div>
+          <div class="kpi"><small>Retention (w4)</small><b>41%</b><em class="down">▼ 1.2 pt</em></div>
+          <div class="kpi"><small>CAC</small><b>$38</b><em class="up">▲ 9.0% WoW</em></div>
+          <div class="kpi"><small>Refunds / churn</small><b>1.8%</b><em class="down">▼ 0.3 pt</em></div>
+        </div>
+        <div class="anomaly"><b>⚑ Anomaly</b><span>Traffic up 11.8% while conversion fell 0.4 pt — new visitors are landing on lower-intent pages. Suggested action: review this week’s top entry pages.</span></div>
+        <div class="demo-note">Synthetic demo data — for illustration only. Not a customer result. Missing fields in real reports are marked “no data”, never invented.</div>
+      </div>
+    </div></section>
+
+    <section id="what"><div class="shell band">
+      <div class="band-head"><h2>Eight fixed KPI slots.<br>Same shape, every week.</h2><p>No configuration burden. The eight slots are fixed so week-to-week comparison is instant; anomalies beyond ±30% week-over-week are flagged automatically and explained in plain English.</p></div>
+      <div class="slots">
+        <div class="slot"><span>01</span><b>Revenue / MRR</b><p>Weekly revenue, or MRR movement for subscription products.</p></div>
+        <div class="slot"><span>02</span><b>Orders</b><p>Paid order count and week-over-week change.</p></div>
+        <div class="slot"><span>03</span><b>Conversion rate</b><p>Visitor-to-customer conversion, with segment notes when visible.</p></div>
+        <div class="slot"><span>04</span><b>Traffic</b><p>Sessions / unique visitors from your analytics export.</p></div>
+        <div class="slot"><span>05</span><b>Active users</b><p>Weekly active users or customers, per your definition.</p></div>
+        <div class="slot"><span>06</span><b>Retention</b><p>Cohort or repeat-rate view, matched to your data.</p></div>
+        <div class="slot"><span>07</span><b>Acquisition cost</b><p>CAC or ad-spend-per-order when spend data is provided.</p></div>
+        <div class="slot"><span>08</span><b>Refunds / churn</b><p>Refund rate or churned accounts for the week.</p></div>
+      </div>
+      <div class="deliverables">
+        <article><h3>Anomaly interpretation</h3><p>Any slot moving more than ±30% week-over-week is flagged and explained in plain English — what moved, the likely driver visible in your data, and what to check next. We never infer causes the data cannot support.</p></article>
+        <article><h3>PDF weekly report</h3><p>A clean 3-page PDF in your inbox every week: KPI table, anomaly notes, and three suggested next actions. A Markdown/Notion version can be included on request.</p></article>
+        <article><h3>Low-friction data intake</h3><p>During presale: you upload CSV exports (GA4, Stripe, Shopify or similar), or grant read-only access. No OAuth app to install, no engineering work on your side.</p></article>
+      </div>
+    </div></section>
+
+    <section id="plans"><div class="shell band">
+      <div class="band-head"><h2>Two ways in. One gate for both.</h2><p>Presale only: checkout activates once 3 intents are collected across the two plans (满 3 个意向即开通付款). Reserving an intent is free and non-binding.</p></div>
+      <div class="pair">
+        <article class="plan-card featured" aria-label="Presale: weekly report subscription">
+          <span class="tag">A — Presale intent</span>
+          <h3 style="margin-top:18px">Weekly report subscription</h3>
+          <span class="amount">$129</span><span class="per">per month · 4 weekly PDF reports · cancel anytime</span>
+          <span class="anchor">Founding anchor: first month $49, then $129/mo</span>
+          <hr>
+          <ul class="included">
+            <li>8 fixed KPI slots, computed from your data exports</li>
+            <li>Anomaly flags (±30% WoW) with plain-English interpretation</li>
+            <li>3 suggested next actions per issue</li>
+            <li>PDF every week, plus Markdown/Notion version on request</li>
+            <li>Data freshness gate: if your data isn’t in by T-1, the issue is delayed and say so — never padded with invented numbers</li>
+          </ul>
+          <div class="gate">
+            <a class="button" href="#intake" data-intent-pick="presale">Join the presale list</a>
+            <p class="gate-note">Checkout opens after 3 intents are collected. We email you a payment link at that point — nothing is charged now, and you can decline then.</p>
+            <p class="provisional">$129/mo and the $49 first-month anchor are provisional (assumed launch pricing, pending validation).</p>
+          </div>
+        </article>
+        <article class="plan-card" aria-label="Trial: one-time data report">
+          <span class="tag">B — Trial order</span>
+          <h3 style="margin-top:18px">One-time data report</h3>
+          <span class="amount">$49</span><span class="per">one-time · no subscription</span>
+          <hr>
+          <ul class="included">
+            <li>Scope: one weekly report from one data source you provide (CSV export of GA4, Stripe, Shopify or similar), covering up to the 8 standard KPI slots</li>
+            <li>Delivery: target within 5 business days after we receive your data export (target, not yet a measured SLA)</li>
+            <li>Includes 1 revision round — corrections to KPI definitions or data reading, within 14 days of delivery</li>
+            <li>Same honesty rules: missing fields marked “no data”, every conclusion tied to a value in your export</li>
+          </ul>
+          <div class="gate">
+            <a class="button secondary" href="#intake" data-intent-pick="trial">Order the $49 trial</a>
+            <p class="gate-note"><strong>Payment unlocks at 3 intents (满 3 个意向即开通付款).</strong> Your intake reserves a production slot in order received; we email the checkout link when the gate opens. Not satisfied with the trial? You’ll have the revision round before any subscription is discussed.</p>
+            <p class="provisional">$49 is provisional (assumed launch pricing, pending validation).</p>
+          </div>
+        </article>
+      </div>
+    </div></section>
+
+    <section id="intake"><div class="shell band">
+      <div class="band-head"><h2>Reserve in two minutes.</h2><p>Fill the form — it generates a structured request you review, copy, and send to us by email or GitHub Issue. No account, no payment, no lock-in.</p></div>
+      <div class="intake">
+        <form id="intake-form" novalidate>
+          <fieldset>
+            <legend>I’m interested in</legend>
+            <div class="radios">
+              <label><input type="radio" name="intent" value="presale" checked> A — Presale subscription ($129/mo)</label>
+              <label><input type="radio" name="intent" value="trial"> B — $49 one-time trial report</label>
+              <label><input type="radio" name="intent" value="both"> Both</label>
+            </div>
+          </fieldset>
+          <div class="field"><label for="f-name">Name <span style="color:var(--slate);font-weight:500">(optional)</span></label><input id="f-name" name="name" type="text" autocomplete="name"></div>
+          <div class="field"><label for="f-email">Email *</label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com"><p class="hint">Used only to reply to this request and to send the checkout link if the 3-intent gate opens.</p></div>
+          <div class="field"><label for="f-biz">Business type</label><select id="f-biz" name="business"><option value="SaaS">SaaS</option><option value="E-commerce / Shopify">E-commerce / Shopify</option><option value="Agency">Agency</option><option value="Indie app / game">Indie app / game</option><option value="Content / newsletter">Content / newsletter</option><option value="Other">Other</option></select></div>
+          <fieldset>
+            <legend>Data sources you can provide</legend>
+            <div class="checks">
+              <label><input type="checkbox" name="sources" value="GA4 export"> GA4 export (CSV)</label>
+              <label><input type="checkbox" name="sources" value="Stripe export"> Stripe export (CSV)</label>
+              <label><input type="checkbox" name="sources" value="Shopify export"> Shopify export (CSV)</label>
+              <label><input type="checkbox" name="sources" value="App store / marketplace data"> App store / marketplace data</label>
+              <label><input type="checkbox" name="sources" value="Other CSV"> Other CSV</label>
+            </div>
+          </fieldset>
+          <div class="field"><label for="f-kpis">Which numbers do you check every week?</label><input id="f-kpis" name="kpis" type="text" placeholder="e.g. MRR, trials, conversion rate"></div>
+          <div class="field"><label for="f-goal">What decision would this report help you make?</label><textarea id="f-goal" name="goal" placeholder="e.g. Whether last week’s pricing change worked; where to spend the next marketing dollar"></textarea></div>
+          <div class="field"><label for="f-ready">Data readiness</label><select id="f-ready" name="readiness"><option value="Can export CSV now">I can export a CSV now</option><option value="Need guidance exporting">I need guidance exporting</option><option value="Not sure yet">Not sure yet</option></select></div>
+          <div class="checks" style="margin-bottom:24px">
+            <label><input type="checkbox" id="f-consent" required> I understand this is a presale: no charge now; checkout opens only after 3 intents are collected, and reserving is non-binding. *</label>
+          </div>
+          <button class="button" type="submit">Generate my request text</button>
+          <p class="hint" id="form-error" role="alert" style="color:var(--danger);min-height:1.3em"></p>
+        </form>
+        <div class="output-box" aria-live="polite">
+          <strong>Your structured request</strong>
+          <textarea id="request-text" readonly placeholder="Click “Generate my request text” — your request appears here for review before anything is sent."></textarea>
+          <div class="submit-row">
+            <button class="button secondary" type="button" id="copy-btn">Copy text</button>
+            <button class="button" type="button" id="email-btn">Send by email</button>
+            <button class="button secondary" type="button" id="issue-btn">Submit via GitHub Issue</button>
+          </div>
+          <p class="copy-status" id="copy-status"></p>
+          <p class="submit-note">Two submission routes, same text: <b>email</b> opens your mail client with the request pre-filled; <b>GitHub Issue</b> posts it to our intake tracker. During this local presale draft, both routes copy the text first so nothing is lost.</p>
+        </div>
+      </div>
+    </div></section>
+
+    <section id="scope"><div class="shell band" style="padding-top:0">
+      <div class="fit">
+        <div><h3>This service is</h3><ol>
+          <li>Done-for-you weekly KPI reporting from data you provide</li>
+          <li>Fixed-scope, fixed-template — comparable week over week</li>
+          <li>Honest about gaps: missing data is marked, never invented</li>
+        </ol></div>
+        <div class="fit excluded"><h3>Out of scope — we do not</h3><ol>
+          <li>Promise revenue, growth or any business outcome</li>
+          <li>Take write access to your accounts, or run ads/campaigns for you</li>
+          <li>Build custom dashboards, integrations or tooling (the report is the product)</li>
+          <li>Report on weeks where your data hasn’t arrived — those issues are delayed and labeled, not fabricated</li>
+          <li>Provide financial, legal or compliance advice</li>
+        </ol></div>
+      </div>
+      <div class="faq" id="faq"><h3>FAQ</h3><div>
+        <details><summary>What exactly do I receive each week?</summary><p>One PDF (about 3 pages): the 8 fixed KPI slots with week-over-week changes, anomaly flags for any movement beyond ±30% with a plain-English interpretation, and three suggested next actions. A Markdown/Notion version is available on request.</p></details>
+        <details><summary>Where does my data come from?</summary><p>From you: CSV exports of GA4, Stripe, Shopify or similar tools, uploaded weekly, or read-only access you grant. During presale there is no OAuth app and nothing to install. We store the minimum needed and delete on request.</p></details>
+        <details><summary>When does payment actually start?</summary><p>When 3 intents are collected across the presale and trial plans, we email everyone on the list a checkout link. Nothing is charged before that, and reserving an intent does not obligate you to pay when the link arrives.</p></details>
+        <details><summary>How does the $49 trial relate to the subscription?</summary><p>The trial is a single one-time report — a low-risk way to see the exact deliverable. After delivery (and your one revision round, if used), we’ll offer the subscription. The trial is not a subscription and does not auto-renew.</p></details>
+        <details><summary>What happens if my data is late or incomplete?</summary><p>The report has a freshness gate: if data isn’t in by the day before an issue (T-1), that issue is delayed and labeled as such. Missing fields are marked “no data”. We never pad or invent numbers.</p></details>
+        <details><summary>Why $129 per month?</summary><p>Self-serve dashboard tools in this space list at roughly $59–$799/mo (Databox $159–799/mo, AgencyAnalytics $59–179/mo, from their public pricing pages, checked 2026-07-22) — and those still require you to build and read the dashboards. This service is done-for-you. Note: $129/mo is provisional launch pricing (assumed), pending validation by actual paid orders.</p></details>
+        <details><summary>Can I cancel?</summary><p>The subscription can be canceled anytime, effective at the end of the current billing cycle. The trial is one-time. The refund policy is not final until checkout opens and will be published with it — no refund promise is made on this presale page.</p></details>
+        <details><summary>Who is behind this?</summary><p>An independent builder validating demand before full automation is built — that is why this is a presale with an intent gate rather than an open checkout. Early customers receive the founding anchor price and direct input on the report format.</p></details>
+      </div></div>
+    </div></section>
+  </main>
+  <footer><div class="shell footer"><span class="wordmark">Monday Dashboard</span><span class="preview-status">Local preview — not published · Presale: checkout opens after 3 intents</span></div></footer>
+
+  <script>
+    /* 本人发布前配置(仅两处):
+       1) INTAKE_EMAIL — 填入接收询盘的邮箱地址,例如 "orders@yourdomain.com";
+       2) ISSUE_URL   — 填入 GitHub 仓库的 issues/new 链接,可带 ?title=&body= 之外的模板参数(脚本会自动附加 title/body)。
+       未配置时的回退行为:点击「Send by email」/「Submit via GitHub Issue」会先复制结构化文本,
+       并在按钮下方提示「联系入口将在页面上线时公布,文本已复制」——本地草稿阶段不指向任何真实地址。 */
+    const INTAKE_EMAIL = "seekiingforhappiness@gmail.com";
+    const ISSUE_URL = "https://github.com/seekiingforhappiness-glitch/ai-workflow-acceptance-test-starter/issues/new";
+
+    const form = document.getElementById("intake-form");
+    const out = document.getElementById("request-text");
+    const status = document.getElementById("copy-status");
+    const err = document.getElementById("form-error");
+    const INTENT_LABEL = {
+      presale: "A — Presale subscription ($129/mo, founding anchor: first month $49)",
+      trial: "B — One-time trial report ($49, scope: 1 data source, 5 business days target, 1 revision)",
+      both: "Both A and B"
+    };
+
+    function buildText() {
+      const d = new FormData(form);
+      const sources = d.getAll("sources");
+      const lines = [
+        "WEEKLY REPORT — PRESALE INTAKE",
+        "==============================",
+        "Intent: " + (INTENT_LABEL[d.get("intent")] || "—"),
+        "Name: " + (d.get("name") || "(not provided)"),
+        "Email: " + (d.get("email") || ""),
+        "Business type: " + (d.get("business") || "—"),
+        "Data sources I can provide: " + (sources.length ? sources.join(", ") : "none selected"),
+        "KPIs I check weekly: " + (d.get("kpis") || "(not provided)"),
+        "Decision this report should support: " + (d.get("goal") || "(not provided)"),
+        "Data readiness: " + (d.get("readiness") || "—"),
+        "",
+        "Acknowledged: presale intent only — no charge now; checkout opens after 3 intents",
+        "are collected (满 3 个意向即开通付款); reserving is non-binding.",
+        "Submitted: " + new Date().toISOString().slice(0, 10) + " (local draft form)"
+      ];
+      return lines.join("\n");
+    }
+
+    function setStatus(msg, isError) {
+      status.textContent = msg;
+      status.style.color = isError ? "var(--danger)" : "var(--teal-dark)";
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      err.textContent = "";
+      const email = document.getElementById("f-email");
+      const consent = document.getElementById("f-consent");
+      if (!email.value || !email.checkValidity()) { err.textContent = "Please enter a valid email — it’s how we send the checkout link."; email.focus(); return; }
+      if (!consent.checked) { err.textContent = "Please confirm the presale acknowledgment checkbox."; consent.focus(); return; }
+      out.value = buildText();
+      setStatus("Request generated — review it, then copy or use a submit route.", false);
+      out.focus();
+    });
+
+    document.querySelectorAll("[data-intent-pick]").forEach(function (a) {
+      a.addEventListener("click", function () {
+        const v = a.getAttribute("data-intent-pick");
+        const r = form.querySelector('input[name="intent"][value="' + v + '"]');
+        if (r) r.checked = true;
+      });
+    });
+
+    async function copyText() {
+      if (!out.value) { setStatus("Generate your request text first.", true); return false; }
+      try { await navigator.clipboard.writeText(out.value); }
+      catch (e) { out.select(); document.execCommand("copy"); }
+      setStatus("Copied to clipboard.", false);
+      return true;
+    }
+    document.getElementById("copy-btn").addEventListener("click", copyText);
+
+    document.getElementById("email-btn").addEventListener("click", async function () {
+      if (!await copyText()) return;
+      const subject = encodeURIComponent("Weekly report — presale intake");
+      const body = encodeURIComponent(out.value);
+      if (INTAKE_EMAIL) { window.location.href = "mailto:" + INTAKE_EMAIL + "?subject=" + subject + "&body=" + body; }
+      else { setStatus("Text copied. The intake email address will be published when this page goes live — paste and send then.", false); }
+    });
+
+    document.getElementById("issue-btn").addEventListener("click", async function () {
+      if (!await copyText()) return;
+      if (ISSUE_URL) {
+        const sep = ISSUE_URL.indexOf("?") === -1 ? "?" : "&";
+        window.open(ISSUE_URL + sep + "title=" + encodeURIComponent("Weekly report — presale intake") + "&body=" + encodeURIComponent(out.value), "_blank", "noopener");
+      } else { setStatus("Text copied. The GitHub Issue intake link will be published when this page goes live — paste it there then.", false); }
+    });
+  </script>
+</body>
+</html>
